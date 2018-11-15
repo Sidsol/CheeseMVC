@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "DeleteView";
+}
+
+<h1>Delete Cheese</h1>
+
+<p><a asp-controller="Cheese" asp-action="Delete">Delete Cheese</a></p>
+
+@if (ViewBag.cheeses.Count == 0)
+{
+    <p>No Cheeses to delete</p>
+}
+else
+{
+    <form method="post">
+        @foreach (Cheese cheese in ViewBag.cheeses)
+        {
+            <input type="checkbox" id="cheese" value="@cheese.Name" name="cheese"/><label for="cheese"> @cheese.Name - @cheese.Description</label><br> <br>
+        }
+        <input type="submit" value="Delete Checked">
+    </form>
+}
+
+

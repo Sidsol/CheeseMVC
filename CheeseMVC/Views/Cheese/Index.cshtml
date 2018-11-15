@@ -1,21 +1,21 @@
-﻿
-@{
-    Layout = null;
+﻿@{
     ViewData["Title"] = "Index";
-
-
 }
 
 <h1>My Cheese</h1>
 
 <p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
 <ul>
-    @if (ViewBag.Cheeses.Count == 0)
+    @if (ViewBag.cheeses.Count == 0)
     {
-        <p>No Cheeses Yet</p>
+        <li>No Cheeses Yet</li>
     }
-    @foreach (string cheese in ViewBag.cheeses)
+    else
     {
-        <li>@cheese</li>
+        @foreach (Cheese cheese in ViewBag.cheeses)
+        {
+            <li>@cheese.Name - @cheese.Description</li>
+        }
     }
+
 </ul>
